@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+
+# Build artifacts
+dist/
+lib/
+build/
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.secret*
+.credentials*
+
+# TypeScript
+*.tsbuildinfo
+
+# Vitest
+coverage/
+test-results/
+
+# OS
+.DS_Store
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Next.js
+.next/
+out/
+
+# Generated code (if ignored)
+src/shared/generated/
+
+# Storybook
+.storybook/
+storybook-static/
