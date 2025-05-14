@@ -1,22 +1,15 @@
-以下は、あなたが指定した **`.clean-architecture-typescript/` ディレクトリ構成**に正確に対応させた、Clean Architectureに基づく実装手順の修正済みドキュメントです。
-
----
-
 # 🚀 クリーンアーキテクチャ設計・実装手順
 
 クリーンアーキテクチャをベースにアプリケーションを設計・実装する際は、「**責務の分離**」と「**依存の向きは常に内側へ**」という原則を守りながら、段階的に構築していくのが理想です。
 
 以下に、学習・実装のためのタスクとステップを体系的に整理します。
 
----
 
 ## ✅ Step 1. ユースケースとドメインの把握
 
 1. 要件整理と業務フローの理解（CRUDか業務処理か）
 2. ユースケース（例：ユーザー登録、ログインなど）を洗い出す
 3. ドメインモデル（Entity, ValueObject）を抽出
-
----
 
 ## ✅ Step 2. ディレクトリ構成と責務設計
 
@@ -154,14 +147,10 @@ usecases
 entities
 ```
 
----
-
 ## ✅ Step 3. インターフェースの設計
 
 * `usecases/user/data-access-interface.ts` に、リポジトリインターフェースなどを定義
 * UseCase はこれに依存し、具体的なDB実装には依存しない
-
----
 
 ## ✅ Step 4. UseCase単位の実装とテスト
 
@@ -170,15 +159,11 @@ entities
 3. `entity.ts` と連携し、エラーハンドリングや値の整合性を担保
 4. ユニットテストを `test/unit/usecases/user/usecase.test.ts` で実装
 
----
-
 ## ✅ Step 5. I/Oとの接続
 
 * `controller.ts` で HTTPリクエストを受け取り、UseCaseに処理を依頼
 * `presenter.ts` で出力データを整形してレスポンス形式に変換
 * `gateways/` にて各DB（json, postgresqlなど）への接続処理を実装
-
----
 
 ## ✅ Step 6. Webフレームワークとサーバ起動
 
@@ -191,8 +176,6 @@ entities
 
 * `frameworks-drivers/web/react/` にてUI実装（Reactなど）
 
----
-
 ## ✅ Step 7. 依存注入とDI構成
 
 * **手動DIで十分（初期段階）**
@@ -200,7 +183,6 @@ entities
   * `controller.ts` で `usecase` に `gateway` を直接注入
 * 必要であれば DI ライブラリ（`tsyringe`, `inversify` など）で `container.ts` を導入
 
----
 
 ## ✅ Step 8. テスト方針と実装
 
@@ -208,15 +190,11 @@ entities
 * ゲートウェイ：`test/integration/interface-adapters/gateways/`
 * エンドツーエンド：`test/e2e/frameworks-drivers/api/hono/user/`
 
----
-
 ## ✅ Step 9. ドキュメント・運用整備
 
 * `README.md`：設計概要、起動手順、依存関係、スキーマ情報など
 * `docker-compose.yml`：PostgreSQLやjson-serverなどの依存サービスを定義
 * 型・APIスキーマ管理は `shared/openapi/` や `shared/zod/` を導入するのも将来的に有効（学習後）
-
----
 
 ## ✅ タスク一覧（チェックリスト形式）
 
