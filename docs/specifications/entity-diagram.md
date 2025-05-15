@@ -37,7 +37,7 @@ classDiagram
 ### User
 
 * `name`: Defaults to `"user"`.
-* `email`: Initialized as an empty string (`""`).
+* `email`: Must be **unique across all users**. This is a business rule and is enforced outside the entity (e.g., in the use case or domain service).
 * `status`: Defaults to `INACTIVE`.
 
 ### Email
