@@ -2,6 +2,9 @@ export class Email {
   private readonly value: string;
 
   constructor(value: string) {
+    if (!value){
+      throw new Error("Missing email")
+    }
     if (!Email.isValid(value)) {
       throw new Error(`Invalid email format: ${value}`);
     }

@@ -1,16 +1,7 @@
-import { User } from "../../../entities/user/user";
+import type { Email } from "@/entities/user/email";
+import type { User } from "@/entities/user/user";
 
-/**
- * ユーザーデータアクセスのインターフェース
- */
-export interface UserDataAccessInterface {
-  /**
-   * 新しいユーザーを保存します
-   */
-  save(user: User): Promise<void>;
-
-  /**
-   * 指定したメールアドレスのユーザーがすでに存在するか確認します
-   */
-  existsByEmail(email: string): Promise<boolean>;
+export interface CreateUserDataAccessInterface {
+  save(user: User): Promise<void>
+  existsByEmail(email: Email): Promise<boolean>
 }

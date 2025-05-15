@@ -42,6 +42,7 @@ classDiagram
 
 ### Email
 
+* empty email is not allowed.
 * Has an `isValid()` method to perform syntax validation.
 * Equality is determined using the `equals()` method.
 * An empty email may be considered invalid and should be handled via a factory or service if necessary.

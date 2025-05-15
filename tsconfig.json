@@ -10,7 +10,8 @@
     "types": ["vitest"],
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@test/*": ["test/*"]
     }
   },
   "include": ["src", "test"]

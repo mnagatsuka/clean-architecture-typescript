@@ -1,5 +1,6 @@
-import { CreateUserOutputData } from "./output-data";
+import type { CreateUserOutputData } from "./output-data"
 
-export interface CreateUserOutputBoundary {
-  present(output: CreateUserOutputData): void;
+export interface CreateUserOutputBoundary<T = unknown> {
+  present(data: CreateUserOutputData): void
+  getResponse(): T
 }

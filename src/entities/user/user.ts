@@ -1,4 +1,4 @@
-import { Email } from "./email";
+import type { Email } from "./email";
 import { UserStatus } from "./user-status";
 
 export class User {
@@ -9,13 +9,13 @@ export class User {
 
   constructor(params: {
     id: string;
-    email: string;
+    email: Email;
     name?: string;
     status?: UserStatus;
   }) {
     this.id = params.id;
     this.name = params.name ?? "user";
-    this.email = new Email(params.email);
+    this.email = params.email;
     this.status = UserStatus.INACTIVE;
   }
 }
