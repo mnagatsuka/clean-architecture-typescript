@@ -1,10 +1,10 @@
-import { InMemoryCreateUserDataAccess } from "@/interface-adapters/gateways/user/in-memory-user-data-access"
-import { CreateUserWebPresenter } from "@/interface-adapters/presenters/user/create-user-web-presenter"
-import { CreateUserController } from "@/interface-adapters/controllers/user/create-user-controller"
-import { CreateUserInteractor } from "@/usecases/user/create-user/usecase-interactor"
-import { UserIdGenerator } from "@/usecases/shared/id-generator/user-id-generator"
-import { UuidGenerator } from "@/frameworks-drivers/id-generator/uuid-generator"
-import type { CreateUserDataAccessInterface } from "@/usecases/user/create-user/data-access-interface"
+import { InMemoryCreateUserDataAccess } from "@src/interface-adapters/gateways/user/in-memory-user-data-access"
+import { CreateUserWebPresenter } from "@src/interface-adapters/presenters/user/create-user-web-presenter"
+import { CreateUserController } from "@src/interface-adapters/controllers/user/create-user-controller"
+import { CreateUserInteractor } from "@src/usecases/user/create-user/usecase-interactor"
+import { UserIdGenerator } from "@src/usecases/shared/id-generator/user-id-generator"
+import { UuidGenerator } from "@src/frameworks-drivers/id-generator/uuid-generator"
+import type { CreateUserDataAccessInterface } from "@src/usecases/user/create-user/data-access-interface"
 
 // 1. データアクセスファクトリマップ
 const userDataAccessFactoryMap: Record<string, () => CreateUserDataAccessInterface> = {

@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest"
 import { Hono } from "hono"
-import { createUserModule } from "@/frameworks-drivers/di/user"
-import { createUserRoute } from "@/frameworks-drivers/api/hono/routes/user/create-user"
-import type { CreateUserViewModel } from "@/interface-adapters/presenters/user/create-user-web-presenter"
+import { createUserModule } from "@src/frameworks-drivers/di/user"
+import { createUserRoute } from "@src/frameworks-drivers/api/hono/routes/user/create-user"
+import type { CreateUserViewModel } from "@src/interface-adapters/presenters/user/create-user-web-presenter"
 import { fetchHonoJson } from "@test/utils/fetch-hono-json"
 
 

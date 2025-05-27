@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest"
-import { InMemoryCreateUserDataAccess } from "@/interface-adapters/gateways/user/in-memory-user-data-access"
-import { Email } from "@/entities/user/email"
-import { User } from "@/entities/user/user"
+import { InMemoryCreateUserDataAccess } from "@src/interface-adapters/gateways/user/in-memory-user-data-access"
+import { Email } from "@src/entities/user/email"
+import { User } from "@src/entities/user/user"
 
 describe("InMemoryCreateUserDataAccess", () => {
   let dataAccess: InMemoryCreateUserDataAccess

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { UuidGenerator } from "@/frameworks-drivers/id-generator/uuid-generator"
+import { UuidGenerator } from "@src/frameworks-drivers/id-generator/uuid-generator"
 
 describe("UuidGenerator", () => {
   it("should generate a non-empty string", () => {

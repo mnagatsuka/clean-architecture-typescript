@@ -31,7 +31,7 @@
 
 
 import { Hono } from "hono"
-import type { CreateUserController } from "@/interface-adapters/controllers/user/create-user-controller"
+import type { CreateUserController } from "@src/interface-adapters/controllers/user/create-user-controller"
 
 export const createUserRoute = (controller: CreateUserController) => {
   const route = new Hono()

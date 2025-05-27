@@ -1,5 +1,5 @@
-import type { CreateUserOutputData } from "@/usecases/user/create-user/output-data"
-import type { CreateUserOutputBoundary } from "@/usecases/user/create-user/output-boundary"
+import type { CreateUserOutputData } from "@src/usecases/user/create-user/output-data"
+import type { CreateUserOutputBoundary } from "@src/usecases/user/create-user/output-boundary"
 
 export type CreateUserViewModel = {
   id: string

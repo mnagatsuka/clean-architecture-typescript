@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest"
-import { CreateUserController } from "@/interface-adapters/controllers/user/create-user-controller"
-import type { CreateUserInputBoundary } from "@/usecases/user/create-user/input-boundary"
-import type { CreateUserOutputBoundary } from "@/usecases/user/create-user/output-boundary"
-import type { CreateUserViewModel } from "@/interface-adapters/presenters/user/create-user-web-presenter"
+import { CreateUserController } from "@src/interface-adapters/controllers/user/create-user-controller"
+import type { CreateUserInputBoundary } from "@src/usecases/user/create-user/input-boundary"
+import type { CreateUserOutputBoundary } from "@src/usecases/user/create-user/output-boundary"
+import type { CreateUserViewModel } from "@src/interface-adapters/presenters/user/create-user-web-presenter"
 
 describe("CreateUserController", () => {
   it("should convert request and pass it to usecase.execute", async () => {

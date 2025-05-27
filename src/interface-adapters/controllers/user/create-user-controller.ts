@@ -1,7 +1,7 @@
-import type { CreateUserInputBoundary } from "@/usecases/user/create-user/input-boundary"
-import type { CreateUserInputData } from "@/usecases/user/create-user/input-data"
-import type { CreateUserOutputBoundary } from "@/usecases/user/create-user/output-boundary"
-import type { CreateUserViewModel } from "@/interface-adapters/presenters/user/create-user-web-presenter"
+import type { CreateUserInputBoundary } from "@src/usecases/user/create-user/input-boundary"
+import type { CreateUserInputData } from "@src/usecases/user/create-user/input-data"
+import type { CreateUserOutputBoundary } from "@src/usecases/user/create-user/output-boundary"
+import type { CreateUserViewModel } from "@src/interface-adapters/presenters/user/create-user-web-presenter"
 
 export type CreateUserRequest = {
   email: string

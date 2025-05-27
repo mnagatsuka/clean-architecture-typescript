@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from "vitest"
-import { Email } from "@/entities/user/email"
-import type { CreateUserDataAccessInterface } from "@/usecases/user/create-user/data-access-interface"
-import type { CreateUserInputData } from "@/usecases/user/create-user/input-data"
-import type { CreateUserOutputBoundary } from "@/usecases/user/create-user/output-boundary"
-import { CreateUserInteractor } from "@/usecases/user/create-user/usecase-interactor"
-import type { IdGenerator } from "@/usecases/shared/id-generator/id-generator"
+import { Email } from "@src/entities/user/email"
+import type { CreateUserDataAccessInterface } from "@src/usecases/user/create-user/data-access-interface"
+import type { CreateUserInputData } from "@src/usecases/user/create-user/input-data"
+import type { CreateUserOutputBoundary } from "@src/usecases/user/create-user/output-boundary"
+import { CreateUserInteractor } from "@src/usecases/user/create-user/usecase-interactor"
+import type { IdGenerator } from "@src/usecases/shared/id-generator/id-generator"
 
 describe("CreateUserInteractor", () => {
   const input: CreateUserInputData = {

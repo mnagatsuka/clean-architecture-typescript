@@ -1,43 +1,25 @@
-# Node modules
+# Node
 node_modules/
-
-# Build artifacts
-dist/
-lib/
-build/
-
-# Logs
-logs/
 *.log
+
+# Build
+dist/
+output/
+coverage/
 
 # Environment files
 .env
-.env.local
-.env.*.local
-.secret*
-.credentials*
+.env.*         # 環境別ファイル（.env.development, .env.productionなど）
+!.env.example  # テンプレートはGitに含める
+!.env.test  # testはGitに含める
 
-# TypeScript
-*.tsbuildinfo
-
-# Vitest
-coverage/
-test-results/
-
-# OS
+# System
 .DS_Store
-
-# VSCode / IDE
-.vscode/
 .idea/
+.vscode/
 
-# Next.js
-.next/
-out/
-
-# Generated code (if ignored)
-src/shared/generated/
-
-# Storybook
-.storybook/
-storybook-static/
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

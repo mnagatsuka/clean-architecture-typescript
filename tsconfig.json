@@ -2,17 +2,24 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "moduleResolution": "Node",
-    "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "types": ["vitest"],
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@test/*": ["test/*"]
+      "@/*": ["./*"],
+      "@src/*": ["src/*"],
+      "@test/*": ["test/*"],
+      "@react/*": ["src/frameworks-drivers/web/react/src/*"]
     }
   },
-  "include": ["src", "test"]
+  "include": ["src", "test", "shared"],
+  "exclude": ["node_modules", "dist"]
 }

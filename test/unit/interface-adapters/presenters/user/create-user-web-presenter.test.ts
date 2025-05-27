@@ -1,5 +1,5 @@
-import { CreateUserWebPresenter } from "@/interface-adapters/presenters/user/create-user-web-presenter";
-import type { CreateUserOutputData } from "@/usecases/user/create-user/output-data";
+import { CreateUserWebPresenter } from "@src/interface-adapters/presenters/user/create-user-web-presenter";
+import type { CreateUserOutputData } from "@src/usecases/user/create-user/output-data";
 import { describe, expect, it } from "vitest";
 
 describe("CreateUserWebPresenter", () => {

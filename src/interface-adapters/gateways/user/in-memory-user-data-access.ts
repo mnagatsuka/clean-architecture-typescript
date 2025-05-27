@@ -1,6 +1,6 @@
-import type { Email } from "@/entities/user/email";
-import type { User } from "@/entities/user/user";
-import type { CreateUserDataAccessInterface } from "@/usecases/user/create-user/data-access-interface";
+import type { Email } from "@src/entities/user/email";
+import type { User } from "@src/entities/user/user";
+import type { CreateUserDataAccessInterface } from "@src/usecases/user/create-user/data-access-interface";
 
 /**
  * メモリ上でユーザー情報を管理するデータアクセスの実装
