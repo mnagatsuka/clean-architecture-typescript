@@ -1,16 +1,17 @@
-import { Email } from "@src/entities/user/email"
-import { User } from "@src/entities/user/user"
-import type { IdGenerator } from "@src/usecases/shared/id-generator/id-generator"
-import type { CreateUserInputBoundary } from "./input-boundary"
-import type { CreateUserInputData } from "./input-data"
-import type { CreateUserOutputBoundary } from "./output-boundary"
-import type { CreateUserOutputData } from "./output-data"
 import type { CreateUserDataAccessInterface } from "./data-access-interface"
+import type { InputBoundary } from "@usecases/shared/input-boundary"
+import type { CreateUserInputData } from "./input-data"
+import type { OutputBoundary } from "@usecases/shared/output-boundary"
+import type { CreateUserOutputData } from "./output-data"
+import type { IdGenerator } from "@usecases/shared/id-generator/id-generator"
+import { Email } from "@entities/user/email"
+import { User } from "@entities/user/user"
 
-export class CreateUserInteractor implements CreateUserInputBoundary {
+export class CreateUserInteractor<TViewModel>
+  implements InputBoundary<CreateUserInputData> {
   constructor(
     private readonly userDataAccess: CreateUserDataAccessInterface,
-    private readonly presenter: CreateUserOutputBoundary,
+    private readonly presenter: OutputBoundary<CreateUserOutputData, TViewModel>,
     private readonly idGenerator: IdGenerator
   ) {}
 

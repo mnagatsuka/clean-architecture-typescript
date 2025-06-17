@@ -1,0 +1,19 @@
+{
+  "name": "neon-postgres",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "up:local": "docker compose -f docker-compose.local.yml --env-file .env.local up -d",
+    "up:test": "docker compose -f docker-compose.test.yml --env-file .env.test up -d",
+    "down:local": "docker compose -f docker-compose.local.yml down",
+    "down:test": "docker compose -f docker-compose.test.yml down",
+    "downv:local": "docker compose -f docker-compose.local.yml down -v",
+    "downv:test": "docker compose -f docker-compose.test.yml down -v",
+    "gen:local": "dotenv -f .env.test -- drizzle-kit generate --config=drizzle.config.ts",
+    "gen:test": "dotenv -f .env.test -- drizzle-kit generate --config=drizzle.config.ts",
+    "push:local": "dotenv -f .env.local -- drizzle-kit push --config=drizzle.config.ts",
+    "push:test": "NODE_ENV=test dotenv -f .env.test -- drizzle-kit push --config=drizzle.config.ts",
+    "migrate:local": "dotenv -f .env.local -- drizzle-kit migrate --config=drizzle.config.ts",
+    "migrate:test": "dotenv -f .env.test -- drizzle-kit migrate --config=drizzle.config.ts"
+  }
+}

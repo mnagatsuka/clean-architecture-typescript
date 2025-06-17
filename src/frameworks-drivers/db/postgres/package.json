@@ -1,0 +1,21 @@
+{
+  "name": "postgres",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "up:local": "docker compose --env-file .env.local -f docker-compose.local.yml up -d",
+    "up:test": "docker compose --env-file .env.test -f docker-compose.test.yml up -d",
+    "down:local": "docker compose -f docker-compose.local.yml down",
+    "down:test": "docker compose -f docker-compose.test.yml down",
+    "downv:local": "docker compose -f docker-compose.local.yml down -v",
+    "downv:test": "docker compose -f docker-compose.test.yml down -v",
+    "gen:local": "dotenv -e .env.test -- drizzle-kit generate --config=drizzle.config.ts",
+    "gen:test": "dotenv -e .env.test -- drizzle-kit generate --config=drizzle.config.ts",
+    "push:local": "dotenv -e .env.local -- drizzle-kit push --config=drizzle.config.ts",
+    "push:test": "dotenv -e .env.test -- drizzle-kit push --config=drizzle.config.ts",
+    "migrate:local": "dotenv -e .env.local -- drizzle-kit migrate --config=drizzle.config.ts",
+    "migrate:test": "dotenv -e .env.test -- drizzle-kit migrate --config=drizzle.config.ts",
+    "studio:local": "dotenv -e .env.local -- drizzle-kit studio",
+    "studio:test": "dotenv -e .env.test -- drizzle-kit studio"
+  }
+}

@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+
+  hono:
+    container_name: hono-standalone-test
+    build:
+      context: ../../../../
+      dockerfile: src/frameworks-drivers/api/hono/Dockerfile
+    ports:
+      - "8788:8787"
+    depends_on:
+      - postgres
+    networks:
+      - hono-standalone-test
+
+  # postgres:
+  #   container_name: postgres-hono-standalone-test
+  #   image: postgres:16
+  #   ports:
+  #     - "5434:5432"
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #     POSTGRES_DB: test
+  #   volumes:
+  #     - postgres-hono-standalone-test:/var/lib/postgresql/data
+  #   networks:
+  #     - hono-standalone-test
+
+volumes:
+  hono-standalone-test:
+
+networks:
+  hono-standalone-test:

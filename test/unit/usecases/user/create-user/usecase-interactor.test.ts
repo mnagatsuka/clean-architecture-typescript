@@ -1,10 +1,11 @@
 import { describe, expect, it, vi } from "vitest"
-import { Email } from "@src/entities/user/email"
-import type { CreateUserDataAccessInterface } from "@src/usecases/user/create-user/data-access-interface"
-import type { CreateUserInputData } from "@src/usecases/user/create-user/input-data"
-import type { CreateUserOutputBoundary } from "@src/usecases/user/create-user/output-boundary"
-import { CreateUserInteractor } from "@src/usecases/user/create-user/usecase-interactor"
-import type { IdGenerator } from "@src/usecases/shared/id-generator/id-generator"
+import { Email } from "@entities/user/email"
+import type { CreateUserDataAccessInterface } from "@usecases/user/create-user/data-access-interface"
+import type { CreateUserInputData } from "@usecases/user/create-user/input-data"
+import type { OutputBoundary } from "@usecases/shared/output-boundary"
+import { CreateUserInteractor } from "@usecases/user/create-user/usecase-interactor"
+import type { IdGenerator } from "@usecases/shared/id-generator/id-generator"
+import type { CreateUserOutputData } from "@usecases/user/create-user/output-data"
 
 describe("CreateUserInteractor", () => {
   const input: CreateUserInputData = {
@@ -24,7 +25,7 @@ describe("CreateUserInteractor", () => {
       existsByEmail: vi.fn().mockResolvedValue(false),
     }
 
-    const mockPresenter: CreateUserOutputBoundary = {
+    const mockPresenter: OutputBoundary<CreateUserOutputData, unknown> = {
       present: vi.fn(),
       getResponse: vi.fn().mockReturnValue({ id: "1", message: "User created successfully" }),
     }
@@ -51,7 +52,7 @@ describe("CreateUserInteractor", () => {
       existsByEmail: vi.fn().mockResolvedValue(true),
     }
 
-    const mockPresenter: CreateUserOutputBoundary = {
+    const mockPresenter: OutputBoundary<CreateUserOutputData, unknown> = {
       present: vi.fn(),
       getResponse: vi.fn(),
     }

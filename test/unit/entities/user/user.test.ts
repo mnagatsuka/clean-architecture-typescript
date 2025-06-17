@@ -1,6 +1,6 @@
-import { Email } from "@src/entities/user/email";
-import { User } from "@src/entities/user/user";
-import { UserStatus } from "@src/entities/user/user-status";
+import { Email } from "@entities/user/email";
+import { User } from "@entities/user/user";
+import { UserStatus } from "@entities/user/user-status";
 import { describe, expect, it } from "vitest";
 
 describe("User Entity", () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { UserIdGenerator } from "@src/usecases/shared/id-generator/user-id-generator"
+import { UserIdGenerator } from "@usecases/shared/id-generator/user-id-generator"
 
 describe("UserIdGenerator", () => {
   it("should prefix generated ID with 'user_'", () => {

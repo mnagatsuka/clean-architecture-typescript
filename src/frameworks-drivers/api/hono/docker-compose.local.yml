@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  hono:
+    build:
+      context: ../../../../.. # プロジェクトのルートをコンテキストに指定
+      dockerfile: src/frameworks-drivers/api/hono/Dockerfile
+      target: runner
+    image: hono:local
+    container_name: hono-local
+    working_dir: /app/src/frameworks-drivers/api/hono
+    command: >
+      pnpm exec wrangler dev
+      --local
+      --config wrangler.local.jsonc
+      --script dist/local/worker.js
+    ports:
+      - "8787:8787"
+    environment:
+      NODE_ENV: local
+    restart: unless-stopped

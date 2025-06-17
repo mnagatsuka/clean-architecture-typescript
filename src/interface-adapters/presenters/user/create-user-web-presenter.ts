@@ -1,12 +1,12 @@
-import type { CreateUserOutputData } from "@src/usecases/user/create-user/output-data"
-import type { CreateUserOutputBoundary } from "@src/usecases/user/create-user/output-boundary"
+import type { CreateUserOutputData } from "@usecases/user/create-user/output-data"
+import type { OutputBoundary } from "@usecases/shared/output-boundary"
 
 export type CreateUserViewModel = {
   id: string
   message: string
 }
 
-export class CreateUserWebPresenter implements CreateUserOutputBoundary<CreateUserViewModel> {
+export class CreateUserWebPresenter implements OutputBoundary<CreateUserOutputData, CreateUserViewModel> {
   private viewModel!: CreateUserViewModel
 
   present(data: CreateUserOutputData): void {

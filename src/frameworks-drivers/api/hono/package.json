@@ -1,0 +1,26 @@
+{
+  "name": "hono",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:local": "pnpm exec tsx scripts/build.ts local",
+    "build:test": "pnpm exec tsx scripts/build.ts test",
+    "build:prod": "pnpm exec tsx scripts/build.ts prod",
+    "dev:local": "wrangler dev --config wrangler.local.jsonc",
+    "dev:test": "wrangler dev --env test --config wrangler.test.jsonc",
+    "dev:prod": "wrangler dev --env prod --config wrangler.prod.jsonc",
+    "deploy:local": "wrangler deploy --config wrangler.local.jsonc",
+    "deploy:test": "wrangler deploy --env test --config wrangler.test.jsonc",
+    "deploy:prod": "wrangler deploy --env prod --config wrangler.prod.jsonc",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "hono": "^4.7.10"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.5",
+    "wrangler": "^4.4.0"
+  },
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+}

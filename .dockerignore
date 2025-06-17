@@ -1,0 +1,33 @@
+node_modules
+dist
+.git
+.vscode
+.env*
+
+
+# Git
+.git
+.gitignore
+
+# Node & build artifacts
+node_modules
+**/node_modules
+dist
+coverage
+build
+.pnpm-store
+
+# OSやエディタの不要ファイル
+.DS_Store
+*.log
+# 一律除外
+.env
+.env.*
+# 例外として雛形やCI用ファイルだけ含める
+!.env.example
+!.env.test
+.vscode
+
+# E2Eやテスト
+test
+playwright-report

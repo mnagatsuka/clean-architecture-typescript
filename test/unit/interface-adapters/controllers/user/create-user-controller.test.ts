@@ -1,16 +1,18 @@
 import { describe, it, expect, vi } from "vitest"
-import { CreateUserController } from "@src/interface-adapters/controllers/user/create-user-controller"
-import type { CreateUserInputBoundary } from "@src/usecases/user/create-user/input-boundary"
-import type { CreateUserOutputBoundary } from "@src/usecases/user/create-user/output-boundary"
-import type { CreateUserViewModel } from "@src/interface-adapters/presenters/user/create-user-web-presenter"
+import { CreateUserController } from "@interface-adapters/controllers/user/create-user-controller"
+import type { InputBoundary } from "@usecases/shared/input-boundary"
+import type { CreateUserInputData } from "@/src/usecases/user/create-user/input-data"
+import type { OutputBoundary } from "@usecases/shared/output-boundary"
+import type { CreateUserOutputData } from "@/src/usecases/user/create-user/output-data"
+import type { CreateUserViewModel } from "@interface-adapters/presenters/user/create-user-web-presenter"
 
 describe("CreateUserController", () => {
   it("should convert request and pass it to usecase.execute", async () => {
-    const mockUsecase: CreateUserInputBoundary = {
+    const mockUsecase: InputBoundary<CreateUserInputData> = {
       execute: vi.fn()
     }
 
-    const mockPresenter: CreateUserOutputBoundary<CreateUserViewModel> = {
+    const mockPresenter: OutputBoundary<CreateUserOutputData,CreateUserViewModel> = {
       present: vi.fn(),
       getResponse: vi.fn().mockReturnValue({
         id: "1",

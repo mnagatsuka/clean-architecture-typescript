@@ -9,9 +9,9 @@ coverage/
 
 # Environment files
 .env
-.env.*         # 環境別ファイル（.env.development, .env.productionなど）
-!.env.example  # テンプレートはGitに含める
-!.env.test  # testはGitに含める
+.env.*
+!.env.example
+!.env.test
 
 # System
 .DS_Store

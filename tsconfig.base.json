@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@src/*": ["src/*"],
+      "@entities/*": ["src/entities/*"],
+      "@usecases/*": ["src/usecases/*"],
+      "@interface-adapters/*": ["src/interface-adapters/*"],
+      "@frameworks-drivers/*": ["src/frameworks-drivers/*"],
+      "@react/*": ["src/frameworks-drivers/web/react/src/*"],
+      "@test/*": ["test/*"],
+      "@shared/*": ["shared/*"],
+    }
+  },
+}

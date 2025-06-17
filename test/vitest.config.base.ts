@@ -7,6 +7,10 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, '../'),
       '@src': path.resolve(__dirname, '../src'),
+      '@entities': path.resolve(__dirname, '../src/entities'),
+      '@usecases': path.resolve(__dirname, '../src/usecases'),
+      '@interface-adapters': path.resolve(__dirname, '../src/interface-adapters'),
+      '@frameworks-drivers': path.resolve(__dirname, '../src/frameworks-drivers'),
       '@test': path.resolve(__dirname, '../test'),
       '@react': path.resolve(__dirname, '../src/frameworks-drivers/web/react/src')
     }

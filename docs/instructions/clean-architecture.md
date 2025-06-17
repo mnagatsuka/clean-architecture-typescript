@@ -20,9 +20,9 @@ High-level modules should not depend on low-level modules. Both should depend on
 
 ## Layer Definition
 
-![The Clean Architecture Concept](./image-concept.png "The Clean Architecture Concept")
+![The Clean Architecture Concept](./images/image-concept.png "The Clean Architecture Concept")
 
-![Example Diagram](./image-diagram.png "Example Diagram")
+![Example Diagram](./images/image-diagram.png "Example Diagram")
 
 ### Core Business Rules
 

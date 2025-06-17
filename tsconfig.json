@@ -1,9 +1,11 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2022",
     "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "moduleResolution": "Node",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
@@ -11,14 +13,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"],
-      "@src/*": ["src/*"],
-      "@test/*": ["test/*"],
-      "@react/*": ["src/frameworks-drivers/web/react/src/*"]
-    }
   },
   "include": ["src", "test", "shared"],
   "exclude": ["node_modules", "dist"]

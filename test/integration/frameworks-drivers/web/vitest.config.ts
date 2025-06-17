@@ -8,16 +8,16 @@ export default mergeConfig(
   defineConfig({
       plugins: [react()],
       test: {
-      name: 'integration-web',
-      environment: 'jsdom',
-      setupFiles: path.resolve(__dirname, './setup.ts'),
-      include: ['test/integration/frameworks-drivers/web/**/*.test.{ts,tsx}'],
-      coverage: {
-        provider: 'v8',
-        reportsDirectory: path.resolve(__dirname, './coverage'),
-        reporter: ['text', 'html'],
-        exclude: ['**/node_modules/**']
-      }
+        name: 'integration-web',
+        environment: 'jsdom',
+        setupFiles: path.resolve(__dirname, './setup.ts'),
+        include: ['test/integration/frameworks-drivers/web/**/*.test.{ts,tsx}'],
+        coverage: {
+          provider: 'v8',
+          reportsDirectory: path.resolve(__dirname, './coverage'),
+          reporter: ['text', 'html'],
+          exclude: ['**/node_modules/**']
+        }
     }
   })
 )

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022"],
+    "baseUrl": "../../../..",
+    "paths": {
+      "@entities/*": ["src/entities/*"],
+      "@usecases/*": ["src/usecases/*"],
+      "@interface-adapters/*": ["src/interface-adapters/*"],
+      "@frameworks-drivers/*": ["src/frameworks-drivers/*"],
+    },
+    "outDir": "dist",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src", "scripts"],
+  "exclude": ["dist", "node_modules", "test"]
+}

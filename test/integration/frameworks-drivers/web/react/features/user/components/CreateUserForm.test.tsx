@@ -1,22 +1,12 @@
-// test/integration/frameworks-drivers/web/react/features/user/components/CreateUserForm.test.tsx
 import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { CreateUserForm } from '@react/features/user/components/CreateUserForm'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import '@testing-library/jest-dom'
-
-const renderWithProvider = () => {
-  const queryClient = new QueryClient()
-  return render(
-    <QueryClientProvider client={queryClient}>
-      <CreateUserForm />
-    </QueryClientProvider>
-  )
-}
+import { screen, fireEvent, waitFor } from '@testing-library/react'
+import { renderWithProviders } from '@test/utils/render-with-providers'
+import { CreateUserForm } from '@react/features/user/components/CreateUserForm'
 
 describe('CreateUserForm (Integration)', () => {
   it('submits form and shows success message', async () => {
-    renderWithProvider()
+    renderWithProviders(<CreateUserForm />)
 
     fireEvent.change(screen.getByPlaceholderText('Name'), {
       target: { value: 'Taro' },
@@ -27,22 +17,23 @@ describe('CreateUserForm (Integration)', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Create' }))
 
     await waitFor(() => {
-      expect(screen.getByText((content) => content.includes('Success! ID:'))).toBeInTheDocument()
+      // role="status" による検証
+      expect(screen.getByRole('status')).toHaveTextContent(/user created successfully/i)
     })
   })
 
   it('shows validation error when fields are empty', async () => {
-    renderWithProvider()
+    renderWithProviders(<CreateUserForm />)
 
     fireEvent.click(screen.getByRole('button', { name: 'Create' }))
 
     await waitFor(() => {
-      expect(screen.getByText(/Failed to create/)).toBeInTheDocument()
+      expect(screen.getByRole('status')).toHaveTextContent(/failed to create/i)
     })
   })
 
   it('shows 403 error message for invalid email domain', async () => {
-    renderWithProvider()
+    renderWithProviders(<CreateUserForm />)
 
     fireEvent.change(screen.getByPlaceholderText('Name'), {
       target: { value: 'Taro' },
@@ -53,12 +44,12 @@ describe('CreateUserForm (Integration)', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Create' }))
 
     await waitFor(() => {
-      expect(screen.getByText(/Failed to create/)).toBeInTheDocument()
+      expect(screen.getByRole('status')).toHaveTextContent(/failed to create/i)
     })
   })
 
   it('disables button and shows loading text while submitting', async () => {
-    renderWithProvider()
+    renderWithProviders(<CreateUserForm />)
 
     fireEvent.change(screen.getByPlaceholderText('Name'), {
       target: { value: 'Hanako' },
@@ -75,7 +66,7 @@ describe('CreateUserForm (Integration)', () => {
     })
 
     await waitFor(() => {
-      expect(screen.getByText((text) => text.includes('Success! ID:'))).toBeInTheDocument()
+      expect(screen.getByRole('status')).toHaveTextContent(/user created successfully/i)
     })
   })
 })

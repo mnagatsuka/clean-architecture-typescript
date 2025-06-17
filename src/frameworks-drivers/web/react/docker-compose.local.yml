@@ -1,0 +1,23 @@
+services:
+  react:
+    container_name: react-local
+    build:
+      context: ../../../..
+      dockerfile: src/frameworks-drivers/web/react/Dockerfile
+    # distをサーバーで公開（nginxが80番でリッスン）
+    ports:
+      - "5173:80"   # ローカルで5173→コンテナ80（Vite devなら5173、nginxなら80でOK）
+    env_file:
+      - .env.local  # .env.localをプロジェクトルート or react直下に
+    # volumes:
+      # ホットリロード用途ならsrcやpublicをマウント
+      # - ./src/frameworks-drivers/web/react/src:/app/src/frameworks-drivers/web/react/src
+      # - ./src/frameworks-drivers/web/react/public:/app/src/frameworks-drivers/web/react/public
+      # - ./src/frameworks-drivers/web/react/.env.local:/app/src/frameworks-drivers/web/react/.env.local
+    networks:
+      - local-network
+    restart: unless-stopped
+
+networks:
+  local-network:
+    external: true

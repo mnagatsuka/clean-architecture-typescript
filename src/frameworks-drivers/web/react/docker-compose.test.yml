@@ -1,0 +1,24 @@
+services:
+  react:
+    container_name: react-test
+    build:
+      context: ../../../..
+      dockerfile: src/frameworks-drivers/web/react/Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL}
+    ports:
+      - "5174:80"
+    env_file:
+      - .env.test
+    # volumes:
+      # ホットリロード用途ならsrcやpublicをマウント
+      # - ./src/frameworks-drivers/web/react/src:/app/src/frameworks-drivers/web/react/src
+      # - ./src/frameworks-drivers/web/react/public:/app/src/frameworks-drivers/web/react/public
+      # - ./src/frameworks-drivers/web/react/.env.test:/app/src/frameworks-drivers/web/react/.env.test
+    networks:
+      - test-network
+    restart: unless-stopped
+
+networks:
+  test-network:
+    external: true

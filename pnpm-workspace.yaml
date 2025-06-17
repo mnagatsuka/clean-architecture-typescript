@@ -1,4 +1,7 @@
-# pnpm-workspace.yaml
 packages:
   - 'src/**'
   - 'test/**'
+  - 'shared/**'
+  - 'src/frameworks-drivers/api/fastify'
+  - 'src/frameworks-drivers/web/react'
+  

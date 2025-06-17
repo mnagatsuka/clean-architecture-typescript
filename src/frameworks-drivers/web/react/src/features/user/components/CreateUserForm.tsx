@@ -33,9 +33,21 @@ export function CreateUserForm() {
       >
         {mutation.isPending ? 'Submitting...' : 'Create'}
       </button>
-
-      {mutation.isSuccess && <p className="mt-2 text-green-600">Success! ID: {mutation.data.id}</p>}
-      {mutation.isError && <p className="mt-2 text-red-600">Failed to create</p>}
+      {/* フィードバックメッセージ */}
+      <div aria-live="polite">
+        {mutation.isSuccess && (
+          // biome-ignore lint/a11y/useSemanticElements: <output>だとテスト通らないため
+          <div role="status" className="mt-2 text-green-600">
+            User created successfully: {mutation.data.id}
+          </div>
+        )}
+        {mutation.isError && (
+          // biome-ignore lint/a11y/useSemanticElements: <output>だとテスト通らないため
+          <div role="status" className="mt-2 text-red-600">
+            Failed to create
+          </div>
+        )}
+      </div>
     </form>
   )
 }

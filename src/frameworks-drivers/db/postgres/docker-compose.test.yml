@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-test
+    restart: always
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres-test:/var/lib/postgresql/data
+      # 初期化SQL使う場合は以下を有効に
+      # - ./src/frameworks-drivers/db/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    env_file:
+      - .env.test
+    networks:
+      - test-network
+
+volumes:
+  postgres-test:
+
+networks:
+  test-network:
+    external: true

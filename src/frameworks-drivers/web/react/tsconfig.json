@@ -1,11 +1,23 @@
 {
-  "extends": "../../../../tsconfig.json",
+  "extends": "../../../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "target": "ES2022",
+    "module": "ESNext", 
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
   },
-  "include": ["src"],
+  "include": [
+    "src/*",
+    "../../../../src/entities/**/*.ts",
+    "../../../../src/usecases/**/*.ts",
+    "../../../../src/interface-adapters/**/*.ts",
+    "../../../../src/frameworks-drivers/**/*.ts",
+    "../../../../shared/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

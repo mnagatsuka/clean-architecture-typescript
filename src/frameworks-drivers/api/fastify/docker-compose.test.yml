@@ -1,0 +1,22 @@
+services:
+  fastify:
+    container_name: fastify-test
+    build:
+      context: ../../../.. # Correctly points to the monorepo root
+      dockerfile: src/frameworks-drivers/api/fastify/Dockerfile
+      target: runner # Uses the runner stage for the final image
+    # The working_dir in docker-compose.yml should match the WORKDIR in the Dockerfile's runner stage
+    working_dir: /app/src/frameworks-drivers/api/fastify
+    # The command should just be the default CMD in the Dockerfile
+    # command: node ./dist/index.js # This line is often redundant if CMD is correctly set in Dockerfile
+    ports:
+      - "3031:3030"
+    env_file:
+      - .env.test
+    restart: unless-stopped
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    external: true

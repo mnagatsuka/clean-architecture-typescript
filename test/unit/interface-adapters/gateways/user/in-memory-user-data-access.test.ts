@@ -1,13 +1,16 @@
 import { describe, it, expect, beforeEach } from "vitest"
-import { InMemoryCreateUserDataAccess } from "@src/interface-adapters/gateways/user/in-memory-user-data-access"
-import { Email } from "@src/entities/user/email"
-import { User } from "@src/entities/user/user"
+import { InMemoryUserDataAccess } from "@interface-adapters/gateways/user/in-memory-user-data-access"
+import { Email } from "@entities/user/email"
+import { User } from "@entities/user/user"
+import { InMemoryDatabase } from "@frameworks-drivers/db/inmemory/in-memory-database"
 
-describe("InMemoryCreateUserDataAccess", () => {
-  let dataAccess: InMemoryCreateUserDataAccess
+describe("InMemoryUserDataAccess", () => {
+  let dataAccess: InMemoryUserDataAccess
 
   beforeEach(() => {
-    dataAccess = new InMemoryCreateUserDataAccess()
+    const db = InMemoryDatabase.getInstance() // シングルトンから取得
+    db.clearAll() // テスト前に状態リセット
+    dataAccess = new InMemoryUserDataAccess(db)
   })
 
   it("should return false if email does not exist", async () => {
@@ -42,9 +45,9 @@ describe("InMemoryCreateUserDataAccess", () => {
 
   it("should save multiple users", async () => {
     const users = [
-      new User({ id: "1", email: new Email("a@example.com") }),
-      new User({ id: "2", email: new Email("b@example.com") }),
-      new User({ id: "3", email: new Email("c@example.com") }),
+      new User({ id: "1", email: new Email("a@example.com"), name: "A" }),
+      new User({ id: "2", email: new Email("b@example.com"), name: "B" }),
+      new User({ id: "3", email: new Email("c@example.com"), name: "C" }),
     ]
 
     for (const user of users) {

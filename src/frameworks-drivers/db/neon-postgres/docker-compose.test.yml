@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: neon-postgres-test
+    # command: '-d 1'
+    volumes:
+      - neon-postgres-test:/var/lib/postgresql/data
+    ports:
+      - '${POSTGRES_PORT}:5432'
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  neon-proxy:
+    image: ghcr.io/timowilhelm/local-neon-http-proxy:main
+    container_name: neon-postgres-proxy-test
+    environment:
+      - PG_CONNECTION_STRING=${LOCAL_PG_CONNECTION_STRING}
+    ports:
+      - '4445:4444'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  neon-postgres-test:

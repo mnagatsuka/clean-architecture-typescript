@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  neon-postgres:
+    image: neondatabase/neon_local:latest
+    container_name: neon-postgres-local
+    ports:
+      - "54321:5432"  # TCP接続用（念のため開けておく）
+      - "4444:4444"   # fetch API（drizzle/neonが利用）
+    environment:
+      NEON_PROJECT_ID: ${NEON_PROJECT_ID}
+      NEON_AUTH_PASSWORD: ${NEON_AUTH_PASSWORD}
+      NEON_PG_PASSWORD: ${NEON_PG_PASSWORD}
+    volumes:
+      - neon-local:/root/.neon_local
+    env_file:
+      - .env.local
+
+volumes:
+  neon-local:
+

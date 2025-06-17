@@ -1,0 +1,92 @@
+// 開発保留のためテスト対象外
+
+// import { describe, it, expect, beforeAll, beforeEach } from "vitest"
+// import { Hono } from "hono"
+// import { createUserModule } from "@frameworks-drivers/di/user"
+// import { createUserRoute } from "@frameworks-drivers/api/hono/src/routes/user/create-user"
+// import type { CreateUserViewModel } from "@interface-adapters/presenters/user/create-user-web-presenter"
+// import { fetchHonoJson } from "@test/utils/fetch-hono-json"
+// import type { PostgresDBClient } from "@frameworks-drivers/db/postgres/client"
+// import { sql } from "drizzle-orm"
+
+// let app: Hono
+// let db: PostgresDBClient
+// const dbUrl = process.env.DB_URL ?? ''
+
+// beforeAll(async () => {
+//   // Postgresのインスタンスを遅延ロード（副作用のない import）
+//     const { getDb } = await import("@frameworks-drivers/db/postgres/client")
+//     db = getDb(dbUrl)
+
+//   const { controller } = await createUserModule()
+//   app = new Hono().route("/", createUserRoute(controller))
+// })
+
+// beforeEach(async () => {
+//   // テスト実行前にDBをクリーンアップ
+//   await db.execute(sql`TRUNCATE TABLE "user" RESTART IDENTITY CASCADE`)
+// })
+
+// describe("POST /users (DB integration)", () => {
+//   it("should create a new user successfully", async () => {
+//     const { status, body } = await fetchHonoJson<CreateUserViewModel>(app, "/", {
+//       method: "POST",
+//       body: {
+//         email: "test@example.com",
+//         name: "Alice",
+//       },
+//     })
+
+//     expect(status).toBe(201)
+//     expect(body.message).toBe("User created successfully")
+//     expect(body.id).toBeDefined()
+//   })
+
+//   it("should return 400 if the email already exists", async () => {
+//     // 初回登録
+//     await fetchHonoJson(app, "/", {
+//       method: "POST",
+//       body: {
+//         email: "test@example.com",
+//         name: "Alice",
+//       },
+//     })
+
+//     // 重複登録
+//     const { status, body } = await fetchHonoJson<{ message: string }>(app, "/", {
+//       method: "POST",
+//       body: {
+//         email: "test@example.com",
+//         name: "Bob",
+//       },
+//     })
+
+//     expect(status).toBe(400)
+//     expect(body.message).toBe("Email already exists")
+//   })
+
+//   it("should return 400 if the email format is invalid", async () => {
+//     const { status, body } = await fetchHonoJson<{ message: string }>(app, "/", {
+//       method: "POST",
+//       body: {
+//         email: "invalid-email",
+//         name: "Charlie",
+//       },
+//     })
+
+//     expect(status).toBe(400)
+//     expect(body.message).toBe("Invalid email format: invalid-email")
+//   })
+
+//   it("should return 400 if email is missing", async () => {
+//     const { status, body } = await fetchHonoJson<{ message: string }>(app, "/", {
+//       method: "POST",
+//       body: {
+//         name: "NoEmail",
+//       },
+//     })
+
+//     expect(status).toBe(400)
+//     expect(body.message.toLowerCase()).toContain("email")
+//   })
+// })
