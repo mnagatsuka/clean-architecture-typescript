@@ -1,10 +1,10 @@
 services:
-  postgres:
+  postgres-local:
     image: postgres:16
     container_name: postgres-local
     restart: always
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "${POSTGRES_PORT:-54321}:5432"
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
